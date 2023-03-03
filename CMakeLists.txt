@@ -10,7 +10,7 @@ configure_file(version.h.in version.h)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Threads)
-find_package(Boost COMPONENTS algorithm)
+find_package(Boost)
 
 if(WIN32)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
@@ -35,7 +35,7 @@ target_include_directories(async
   PRIVATE ${Boost_INCLUDE_DIR})
 
 target_link_libraries(async
-  PRIVATE Boost::algorithm)
+  PRIVATE Boost::boost)
 
 add_executable(async_cli main.cxx)
 
