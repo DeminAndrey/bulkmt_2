@@ -10,13 +10,6 @@ configure_file(version.h.in version.h)
 find_package(Threads)
 find_package(Boost)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -Wall -pedantic")
-set_target_properties(${PROJECT_NAME} PROPERTIES
-                CXX_STANDARD 17
-                CXX_STANDARD_REQUIRED ON
-                COMPILE_OPTIONS "-O0;-Wall;"
-)
-
 if(WIN32)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
@@ -32,6 +25,13 @@ add_library(async
   async.cxx
   command_processor.h
   output.h)
+  
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -Wall -pedantic")
+set_target_properties(${PROJECT_NAME} PROPERTIES
+                CXX_STANDARD 17
+                CXX_STANDARD_REQUIRED ON
+                COMPILE_OPTIONS "-O0;-Wall;"
+)
 
 target_include_directories(async
   PRIVATE ${Boost_INCLUDE_DIR})
