@@ -7,10 +7,15 @@ project(async VERSION ${PROJECT_VESRION})
 
 configure_file(version.h.in version.h)
 
-set(CMAKE_CXX_STANDARD 17)
-
 find_package(Threads)
 find_package(Boost)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -Wall -pedantic")
+set_target_properties(${PROJECT_NAME} PROPERTIES
+                CXX_STANDARD 17
+                CXX_STANDARD_REQUIRED ON
+                COMPILE_OPTIONS "-O0;-Wall;"
+)
 
 if(WIN32)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
